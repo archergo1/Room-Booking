@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- background carousel -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <!-- background carousel -->
+            <!-- carousel slides -->
           <div class="swiper-slide"><img src="./01_home_bg_image1/bg1@2x.png" alt=""></div>
           <div class="swiper-slide"><img src="./01_home_bg_image1/bg2@2x.png" alt=""></div>
           <div class="swiper-slide"><img src="./01_home_bg_image1/bg3@2x.png" alt=""></div>
@@ -30,31 +31,27 @@
                     <h1 class="houseHotel">好室旅店。HOUSE HOTEL</h1>
                     <li class="address">花蓮縣花蓮市國聯一路1號</li>
                     <li class="phone">03-8321155</li>
-                    <li class="website">HOUSE@HOTEL.COM</li>
-                    
+                    <li class="website">HOUSE@HOTEL.COM</li>                    
                 </ul>
-                
+
             </div>
             <ul class="roomType">
-                <li><img src="./01_home_bg_image1/single.png" alt=""></li>
-                <li><img src="./01_home_bg_image1/double.png" alt=""></li>
-                <li class="twin">
-                    <img src="./01_home_bg_image1/twin.png" alt="">
-                    <!-- <span class="roomName" >TWIN</span> -->
-                </li>
-                <li><img src="./01_home_bg_image1/deluxeSingle.png" alt=""></li>
-                <li><img src="./01_home_bg_image1/deluxeDouble.png" alt=""></li>
-                <li><img src="./01_home_bg_image1/deluxeTwin.png" alt=""></li>
+                <li class = "single"></li>
+                <li class = "double"></li>
+                <li class = "twin"></li>
+                <li class = "deluxeSingle"></li>
+                <li class = "deluxeDouble"></li>
+                <li class = "deluxeTwin"></li>
             </ul>
             <div class="swiper-pagination"></div>
         </div>
-        
     </div>
     
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -73,7 +73,7 @@ body {
   margin: 0;
   padding: 0;
 }
-
+/* swiper */
 .swiper {
   width: 100%;
   height: 100%;
@@ -109,6 +109,8 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+
 
 .container {
   position: relative;
@@ -147,5 +149,37 @@ body {
   /* flex-direction: row-reverse; */
   flex-wrap: wrap;
 }
+
+.roomType li{
+  position: relative;
+}
+
+.roomType li img{
+  width: 275px;
+  height: 275px;
+}
+
+/* mask effect */
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 275px;
+  height: 275px;
+  background: #38470b;
+  color: #ffffff;
+  opacity: 0;
+  padding-top: 125px;
+}
+
+.mask h3 {
+  text-align: center;
+  font-size: 19px;
+}
+
+.roomType li
+a:hover 
+.mask { opacity: 0.6; }
 
 
