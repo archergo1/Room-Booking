@@ -187,20 +187,43 @@ h2{
 }
 
 .amenity li{
-    width: 70px;
+    padding-left: 15px;
     margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
+    margin-right: 20px;
 }
 
 .breakfast{
-    width: 40px;
-    height: 40px;
+   
 }
 
 .amenity{
     margin-top: 45px;
     display: flex;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
+}
 
+.set{
+    display: flex;
+    align-items: flex-start;
+}
+
+.amenity li p{
+    margin-top: 8px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    color: #949C7C; 
+}
+
+.non{
+    opacity: 0.3;
+}
+
+.service{
+    display: flex;
+    align-items: flex-start;
 }
