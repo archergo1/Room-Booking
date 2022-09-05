@@ -40,7 +40,7 @@ async function fetchData(){
   
   let ary = [];
   try{
-  await axios.get(deluxeTwin, config)
+  await axios.get(singleRoom, config)
     .then((res) => {
       ary = res.data.room;
     });

@@ -56,7 +56,7 @@ async function fetchData(){
     const room2 = document.querySelector(".double")
     let doublePic = 
         `<img src="${ary[2].imageUrl}" alt=""></img>
-        <a href="../roomPage/room.html">
+        <a href="../doubleRoom/room.html">
         <div class="mask">
         <h3>${ary[2].name}</h3>
         </div>
@@ -66,7 +66,7 @@ async function fetchData(){
     const room3 = document.querySelector(".twin")
     let twinPic = 
         `<img src="${ary[4].imageUrl}" alt=""></img>
-        <a href="../roomPage/room.html">
+        <a href="../twinRoom/room.html">
         <div class="mask">
         <h3>${ary[4].name}</h3>
         </div>
@@ -76,7 +76,7 @@ async function fetchData(){
     const room4 = document.querySelector(".deluxeSingle")
     let deluxeSinglePic = 
         `<img src="${ary[1].imageUrl}" alt=""></img>
-        <a href="../roomPage/room.html">
+        <a href="../deluxeSingle/room.html">
         <div class="mask">
         <h3>${ary[1].name}</h3>
         </div>
@@ -86,7 +86,7 @@ async function fetchData(){
     const room5 = document.querySelector(".deluxeDouble")
     let deluxeDoublePic = 
         `<img src="${ary[3].imageUrl}" alt=""></img>
-        <a href="../roomPage/room.html">
+        <a href="../deluxeDouble/room.html">
         <div class="mask">
         <h3>${ary[3].name}</h3>
         </div>
@@ -96,7 +96,7 @@ async function fetchData(){
     const room6 = document.querySelector(".deluxeTwin")
     let deluxeTwinPic = 
         `<img src="${ary[5].imageUrl}" alt=""></img>
-        <a href="../roomPage/room.html">
+        <a href="../deluxeTwin/room.html">
         <div class="mask">
         <h3>${ary[5].name}</h3>
         </div>
