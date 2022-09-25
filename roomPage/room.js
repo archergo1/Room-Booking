@@ -251,10 +251,6 @@ async function fetchData(){
 
 
 
-
-
-
-
   }
 
     roomDetail()
@@ -269,7 +265,86 @@ async function fetchData(){
 fetchData()
 
 
+// calendar on the room page
+// datepicker
+$(function() {
+  $("#datepicker").datepicker({ numberOfMonths: 2, minDate: 0, maxDate: "1m" });
+  console.log();
+  let daynight = 0;
 
+  let startDate = $("#startDate").datepicker({
+      dateFormat: "yy-mm-dd",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      minDate: 0,
+      maxDate: "1m",
+  });
+  $("#startDate").on("change", function() {
+      endDate.datepicker("option", "minDate", $(this).val());
+      dayCount();
+  });
+  let endDate = $("#endDate").datepicker({
+      dateFormat: "yy-mm-dd",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      maxDate: "1m",
+  });
+  $("#endDate").on("change", function() {
+      startDate.datepicker("option", "maxDate", $(this).val());
+      dayCount();
+  });
+
+  let dayCount = function() {
+      let startDate = $("#startDate").datepicker("getDate");
+      let endDate = $("#endDate").datepicker("getDate");
+
+      if (startDate != null && endDate != null) {
+          daynight = Math.floor((endDate.getTime() - startDate.getTime()) / 86400000);
+          $(".dayNight").text(`${daynight + 1}天，總共${daynight}晚`);
+          $(".totalprice span").text(`$${(daynight + 1) * room.room[0].normalDayPrice}`);
+      }
+  };
+
+  $("#startDate").on("change", function() {
+      var startDate = $(this).val();
+      console.log();
+  });
+
+  function getDate(element) {
+      var date;
+      try {
+          date = $.datepicker.parseDate(dateFormat, element.value);
+      } catch (error) {
+          date = null;
+      }
+
+      return date;
+  }
+});
+
+
+// booking modal
+document.querySelectorAll(".bookingIcon").forEach(function(el) {
+  let nowamenities = el.dataset.amenities;
+  if (!room.room[0].amenities[nowamenities]) {
+      el.classList.add("Amenitiesnone");
+  }
+});
+document.querySelector(".checkBtn").addEventListener("click", function(el) {
+  el.preventDefault();
+  document.querySelector(".bookingNow").classList.remove("hidden");
+});
+document.querySelector(".bookingNowClose").addEventListener("click", function(el) {
+  el.preventDefault();
+  document.querySelector(".bookingNow").classList.add("hidden");
+});
+document.querySelector(".finishBtn").addEventListener("click", function(el) {
+  el.preventDefault();
+  document.querySelector(".bookingFinish").style.display = "flex";
+  document.querySelector(".bookingNowClose").style.color = "#fff";
+});
 
 
 

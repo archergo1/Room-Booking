@@ -228,3 +228,302 @@ h2{
 .emptyRoom{
     color: #38470B;
 }
+
+
+/*datepicker*/
+
+.dateTitle{
+    margin-top:28px;
+    font-weight: 500;
+}
+
+#datepicker{
+    width: 80%;
+    margin-bottom:59px;
+}
+
+#datepicker .ui-widget-content{
+    width: 100% !important;
+    border:1px solid #38470B;
+    padding: 20px;
+    margin: 0;
+}
+
+#datepicker .ui-widget-header,#datepicker .ui-state-default{
+    background-color: transparent;
+    border: 0;
+}
+
+#datepicker .ui-datepicker-week-end,.ui-datepicker-title{
+    color: #38470B;
+}
+
+#datepicker .ui-datepicker-calendar thead th{
+    box-sizing:border-box;
+    width: 40px;
+}
+
+
+#datepicker .ui-state-default{
+    text-align: center;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    color: #38470B;
+    border-radius: 10px;
+} 
+
+
+#datepicker .ui-state-default:hover{
+    background-color: #949C7C70;
+} 
+
+#datepicker .ui-state-active{
+    background-color: #38470B;
+    color: #fff;
+}
+
+
+
+/*booking modal*/
+.hidden{
+    display: none;
+}
+
+.bookingNow{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bgcolor{
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc80;
+}
+
+.bookingFinish,.bookingError{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #38470B;
+    z-index: 9999998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    display: none;
+}
+
+.bookingFinish strong,.bookingError strong{
+    font-size: 50px;
+    margin: 40px 0;
+} 
+
+.bookingFinish p,.bookingError p{
+    font-size: 20px;
+    margin: 30px 0;
+    font-weight: 100;
+    width: 30%;
+    text-align: center;
+} 
+
+.bookingNowContent{
+    width: 80%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color: #fff;
+    display: flex;
+}
+
+.bookingNowClose{
+    position:absolute;
+    right:30px;
+    top:20px;
+    font-size: 25px;
+    color: #38470B;
+    z-index: 9999999;
+}
+
+.checkformContent{
+    width: 40%;
+    background-color: #38470B;
+    display: flex;
+    justify-content: center;
+}
+
+.checkform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 70%;
+}
+
+.checkform input{
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 16px;
+    border: 0;
+}
+
+.checkform p{
+    margin:0;
+    color:#949C7C;
+}
+
+.checkform hr{
+    width: 100%;
+    border:0;
+    background-color:#949C7C;
+    height:1px;
+}
+
+.checkform .totalprice{
+    color: #fff;
+    text-align: right;
+}
+
+.checkform .totalprice span{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.checkform .finishBtn{
+    width: 100%;
+    text-align: center;
+    border:2px solid #fff;
+    margin-top:20px;
+    padding: 8px 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    box-sizing: border-box;
+    transition: .3s all;
+}
+
+.checkform .finishBtn:hover{
+    border-color: #949C7C;
+    background-color: #949C7C;
+}
+
+.checkform .pointText{
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.checkContent{
+    width: 60%;
+    color: #38470B;
+    padding-left:30px;
+}
+
+.checkTitle,.bookingNewContent,.bookingReserveContent{
+    margin-top:51px;
+    width: 90%;
+    position:relative;
+    display: flex;
+    
+}
+
+.checkTitle::before,.bookingNewContent::before,.bookingReserveContent::before{
+    content: "";
+    position:absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #38470B40;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+    z-index: 0;
+}
+
+.checkTitle .bookingtitle,.bookingNewContent .bookingNewtitle,.bookingReserveContent .bookingReservetitle{
+    font-size: 24px;
+    font-weight: 700;
+    margin:0px;
+    background-color: #fff;
+    padding: 10px 15px 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.bookingRoomSize,.bookingCheckIn{
+    font-weight: 500;
+    margin:0;
+}
+
+.bookingAmenities .bookingIcon{
+    margin: 10px 2px;
+    width: 70px;
+}
+
+.bookingAmenities p{
+    font-weight: 300;
+}
+
+.bookingAmenities .bookingIcon img{
+    width: 30px;
+}
+
+.bookingAmenities .Amenitiesnone{
+    display: none;
+}
+
+.bookingNewContent .bookingNewtitle,.bookingReserveContent .bookingReservetitle{
+    font-size: 18px;
+}
+
+.bookingNewText{
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.bookingReserveChart{
+    width: 80%;
+    display: flex;
+    margin-bottom: 26px;
+}
+
+.bookingReserveChart .chart{
+    width: 30%;
+    border:1px solid #949C7C;
+    border-radius: 0 0 10px 10px;
+}
+
+.bookingReserveChart .chart .chartImg{
+    background-color: #949C7C;
+    position:relative;
+    width: 100%;
+    height:50px;
+}
+
+.bookingReserveChart .chartImg img{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.bookingReserveChart .chart p{
+    font-weight: 300;
+    font-size: 13px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.bookingReserveChart .nexticon{
+    width: 5%;
+}
+.bookingReserveChart .nexticon p{
+    text-align: center;
+    color:#949C7C;
+}

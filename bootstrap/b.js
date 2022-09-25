@@ -26,3 +26,4 @@ $( "#myform" ).validate({
     alert('成功送出！');
   }
 });
+
