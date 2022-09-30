@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>我在測試Confirm Box</h1>
+    <input class='popuptest' type="button" value="按我">
+    <p class='show'></p>
+
+    <script>
+        var button = document.querySelector('.popuptest');
+        var showtxt = document.querySelector('.show');
+
+        function popup2(e) {
+            window.confirm('ConfirmBox測試成功嗎');
+            if (confirm('ConfirmBox測試成功嗎') == true) {
+                showtxt.innerHTML = 'Yes，測試成功';
+            } else {
+                showtxt.innerHTML = '您已取消確認';
+            }
+
+        };
+        button.addEventListener('click', popup2);
+    </script>
+</body>
+</html>

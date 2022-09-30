@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+   <button onclick="openPage()" type="button" class="book_btn">Booking
+    now</button>  
+
+
+    <div class="bookingDetail cover">
+        <div class="secondLayer">
+          <div class="personalInfo">
+            <form action="" method="GET" id="myform">
+                <!--  -->
+                <ul class = "order">
+                  <li class = "guestName">
+                    <label for = "Name">姓名</label>
+                    <input type="text" id="Name" name= "name" placeholder="黃曉明">
+                  </li>
+                  <li class = "guestMobile">
+                    <label for= "Mobile">手機號碼</label>
+                    <input type="text" id="Mobile" name = "tel" placeholder="0912345678" name="mobile">
+                  </li>
+                  <li>
+                    <label for = "inDate">入住日期</label>
+                    <input type="text" id="inDate" name = "date">
+                  </li>
+                  <li>
+                    <label for = "outDate">退房日期</label>
+                    <input type="text" id="outDate" name = "date">
+                  </li>
+                  <div class="days">
+
+                  </div>
+                  <hr>
+                  <p class = "totalPrice">總計</p>
+                  <button class = "confirmSend" type ="submit">確認送出</button>
+                  <p class= "disclaimer">此預約系統僅預約功能，並不會對您進行收費</p>
+                  
+                </ul>
+              </form>
+        </div>
+        <div class="roomInfo">
+          <button onclick="exitPage()" type="button" class="exitBtn">X
+          </button>
+
+          <!-- put room name here -->
+          <h2 class = "roomName"></h2>
+          <ul class = "inModalDetail">
+            <li class = "basicInfo"></li>
+            <li class = "timeAndPriceSimple"></li>
+          </ul>  
+
+          <ul class = "inAmenity">
+            <!-- breakfast -->
+            <li class = "breakfastY">
+                <div class="set">
+                    <img class ="breakfast" src="./02_room page_room1_image3/breakfast.svg" alt="">
+                </div>
+                <p>早餐</p>
+            </li>
+            <li class = "barY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/bar.svg" alt="">
+                </div>
+                <p>Mini Bar</p>
+            </li>
+            <li class = "serviceY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/service.svg" alt="">
+                </div>
+                <p>Room Service</p>
+            </li>
+            <li class = "wifiY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/wifi.svg" alt="">
+                </div>
+                <p>Wifi</p>
+            </li>
+            <li class = "childY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/child.svg" alt="">
+                </div>
+                <p>適合兒童</p>
+            </li>
+            <li class = "phoneY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/phone.svg" alt="">
+                </div>
+                <p>電話</p>
+            </li>
+            <li class = "beautifulY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/beautiful.svg" alt="">
+                </div>
+                <p>漂亮視野</p>
+            </li>
+            <li class = "fridgeY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/fridge.svg" alt="">
+                </div>
+                <p>冰箱</p>
+            </li>
+            <li class = "sofaY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/sofa.svg" alt="">
+                </div>
+                <p>沙發</p>
+            </li>
+            <li class = "petY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/pet.svg" alt="">
+                </div>
+                <p>攜帶寵物</p>
+            </li>
+            
+            <li class = "smokingY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/smoking.svg" alt="">
+                </div>
+                <p>全面禁菸</p>
+            </li>
+            <li class = "acY">
+                <div class="set">
+                    <img class = "breakfast " src="./02_room page_room1_image3/ac.svg" alt="">
+                </div>
+                <p>空調</p>
+            </li>
+          </ul>
+
+          <h2 class ="memoTitle">訂房資訊</h2>
+          <ul class = "memo">
+            <li>・入住時間：最早15：00，最晚21：00；退房時間：10：00，請自行確認行程安排。</li>
+            <li>・平日定義週一至週四；假日定義週五至週日及國定假日。</li>
+            <li>・好室旅店全面禁止吸菸。</li>
+            <li>・若您有任何問題，歡迎撥打 03-8321155 ( 服務時間 週一至週六 10:00 - 18:00 )。</li>
+          </ul>
+
+          <h2 class = "orderProcessTitle">預約流程</h2>
+          <ul class="orderProcess">
+            <li class="steps step1">
+              <div class="bg">
+                <img src="./03_reserve popover_normal/fill.svg" alt="" class="fill">
+              </div>
+              <p>送出線上預約單</p>
+
+            </li>
+            <li class="next">
+              <img src="./03_reserve popover_normal/next.svg" alt="">
+            </li>
+            <li class="steps step2">
+              <div class="bg">
+                <img src="./03_reserve popover_normal/chat.svg" alt="" class="chat">
+              </div>
+              <p>系統立即回覆是否預訂成功<br>並以簡訊發送訂房通知<br>(若未收到簡訊請來電確認)</p>
+            </li>
+            <li class="next">
+              <img src="./03_reserve popover_normal/next.svg" alt="">
+            </li>
+            <li class="steps step3">
+              <div class="bg">
+                <img src="./03_reserve popover_normal/payment.svg" alt="" class="payment">
+              </div>
+              <p>入住當日憑訂房通知<br>以現金或刷卡付款即可 (僅接受VISA.JCB.銀聯卡)</p>
+            </li>
+          </ul>
+        </div>
+        </div>
+    </div>
+    
+    
+    <!-- success -->
+    <div class="success">
+      <button onclick="exitPage()" type="button" class="exitSuccess">X
+      </button>
+        <img src="./03_reserve popover_normal/success.svg" alt="" class="successImg">        
+        <p class="successful">預約成功</p>
+        <p class="successNote">請留意簡訊發送訂房通知，入住當日務必出示此訂房通知，<br> 若未收到簡訊請來電確認，謝謝您
+        </p>
+    </div>
+
+
+    <!-- failure -->
+    <div class="failure">
+        <button onclick="exitPage()" type="button" class="exitFailure">X
+        </button>
+        <img src="./03_reserve popover_normal/failure.svg" alt="" class="failureImg">        
+        <p class="failed">預約失敗</p>
+        <p class="failureNote">哎呀！晚了一步！您預約的日期已經被預約走了，<br>再看看其它房型吧
+        </p>    
+    </div>
+
+</body>
+<!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="booking.js"></script>
+</html

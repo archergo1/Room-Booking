@@ -1,0 +1,554 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+ 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ 
+/* RWD reset*/
+ 
+img{ max-width: 100%;
+	height:auto;
+}
+ 
+*, *::before, *::after{
+	box-sizing: border-box
+}
+
+/* start! */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    position: absolute;
+    /* 讓swiper-wrapper不佔空間 */
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+.container{
+    margin:0 auto;
+    height: 100vh;
+    max-width: 1366px;
+    display: flex;
+}
+
+.roomView{
+    width: 573px;
+    height: 768px;
+    background-color: aqua;
+    position: relative;
+}
+
+/* .emptyRoom{
+    position: relative;
+    width: 100%;
+    height: 100%;
+} */
+
+.goBack{
+    position: absolute;
+    top: 87px;
+    left: 146px;
+    color: #38470B;
+    background-color: white;
+    border: none;
+    z-index: 2;
+    height:40px;
+    width:100px;
+    opacity: 0.6;
+    border-radius: 5px
+}
+
+.booking{
+    width: 252px;
+    height: 44px;
+    font-size: 20px;
+    background-color: #38470B;
+    color: white;
+    position: absolute;
+    bottom:109px;
+    right:160px;
+    z-index: 2;
+}
+
+.roomDetail{
+    width: 60%;
+    background-color: white;
+    padding-top: 107px;
+    padding-left: 30px;
+    padding-right: 128px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.roomName h2{
+	font-size: 35px;
+	color: #38470B;
+}
+
+.basicInfo{
+    line-height: 20px;
+}
+
+h2{
+    color:#38470B;
+    font-size: 40px;
+}
+
+.dateAndPrice{
+    margin-top: 38px;
+    line-height: 24px;
+}
+
+.desList{
+    padding-left: 30px;
+    margin-top: 35px;
+    list-style-type: disc;
+}
+
+.desList li{
+    line-height: 24px;
+}
+
+.amenity{
+    width: 100%;
+}
+
+.amenity li{
+    padding-left: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.amenity{
+    margin-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.set{
+    display: flex;
+    align-items: flex-start;
+}
+
+.amenity li p{
+    margin-top: 8px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    color: #949C7C; 
+}
+
+.non{
+    opacity: 0.3;
+}
+
+.service{
+    display: flex;
+    align-items: flex-start;
+}
+
+.emptyRoom{
+    color: #38470B;
+}
+
+
+/* hotel datepicker */
+
+.demo_input{
+    height: 300px
+}
+
+
+
+
+
+
+/* the booking page */
+
+label{
+	color: white;
+	margin-bottom: 7px;
+}
+
+.totalPrice{
+	color: white;
+	text-align: end;
+}
+
+.confirmSend{
+	width: 100%;
+	height: 42px;
+	color: white;
+	background-color: #38470B;
+	border: 1px solid white;;
+	font-size: 18px;
+}
+
+.disclaimer{
+	font-size: 12px;
+	width: 100%;
+	margin-top: 18px;
+	color: white;
+	text-align: center;
+}
+
+/* bookingDetail */
+
+.bookingDetail{
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+
+	z-index: 20;
+
+	
+	backdrop-filter: blur(2px);
+	
+	/* background-color: rgba(255, 255, 255, 1); */
+	/* background-color: transparent; */
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.secondLayer{
+	width: 100%;
+	height: 100%;
+	
+	
+	/* background-color: #949c7c; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* opacity: 0.5; */
+}
+
+/* personalInfo */
+
+.personalInfo{
+    background-color: #38470B;
+    width: 445px;
+    height: 720px;
+	padding-left: 65px;
+	padding-right: 65px;
+	padding-top: 50px;
+	border: #38470B solid 1px;
+}
+
+#Name, 
+#Mobile,
+#inDate,
+#outDate
+{
+	width: 100%;
+	height: 40px;
+}
+
+.order li{
+	margin-bottom: 16px;
+}
+
+hr{
+	color: white;
+}
+
+/* roomInfo */
+
+.roomInfo{
+	position: relative;
+	width: 665px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 30px;
+	background-color: white;
+	border: #38470B solid 1px;
+}
+
+.orderProcessTitle{
+	margin-bottom: 12px;
+}
+
+.orderProcess{
+	display: flex;
+	justify-content: space-between;
+}
+
+.steps{
+	width: 170px;
+	border: 1px solid #949c7c;
+	border-radius: 0px 0px 10px 10px;
+}
+
+.steps p{
+	color: #38470B;
+	text-align: center;
+	padding-top: 8px;
+}
+
+.bg{
+	background-color: #949C7C;
+	height: 50px;
+	padding-top: 7px;
+	display: flex;
+}
+
+.bg img{
+	width: 31px;
+	margin: 0 auto
+}
+
+.next{
+	padding-top: 20px;
+}
+
+.inRoomName{
+	font-size: 24px;
+	color: #38470B;
+	line-height: 33px;
+	margin-bottom: 12px;
+	margin-top: 40px;
+}
+
+.inModalDetail li{
+	font-size: 14px;
+	color: #38470B;
+	line-height: 24px;
+}
+
+h2{
+	font-size: 16px;
+	color: #38470B;
+	font-family: Noto Sans CJK TC;
+	line-height: 24px;
+}
+
+/* .inAmenity{
+    
+} */
+
+.inAmenity li{
+    padding-left: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.inAmenity{
+	width: 100%;
+    margin-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inSet{
+    display: flex;
+    align-items: flex-start;
+}
+
+.inAmenity li p{
+    margin-top: 8px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    color: #949C7C; 
+}
+
+.inNon{
+    opacity: 0.3;
+}
+
+.service{
+    display: flex;
+    align-items: flex-start;
+}
+
+.emptyRoom{
+    color: #38470B;
+}
+
+.memoTitle{
+	margin-bottom: 12px;
+}
+
+.memo{
+	margin-bottom: 12px;
+}
+
+.memo li{
+	color:#38470B;
+	line-height: 26px;
+}
+
+/* success and failure*/
+
+.success,
+.failure{
+	position: relative;
+	padding-top: 125px;
+	height: 720px;
+	width: 1100px;
+	background-color: #38470B;
+
+	margin-bottom: 15px;
+}
+
+.successImg,
+.failureImg
+{
+	display: block;
+	margin: 0 auto;
+	width: 125px;
+	
+}
+
+.successful,
+.failed
+{
+	color: white;
+	font-size: 50px;
+	text-align: center;
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+.successNote,
+.failureNote
+{
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	line-height: 30px;
+}
+
+
+/* kayami */
+
+
+.d-none{
+	display: none;
+}
+
+
+.book_btn{
+	height: 100px;
+	width: 300px;
+	margin-bottom: 20px;
+}
+
+.exitBtn{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border-width: 0px;
+	font-size: 25px;
+	color: #38470B;
+	outline: none;
+}
+
+.exitSuccess,
+.exitFailure
+{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border-width: 0px;
+	font-size: 30px;
+	color: white;
+	outline: none;
+}
+
