@@ -127,7 +127,7 @@ async function fetchData(){
             bedType.type = '豪華雙床房'
           }
 
-          console.log(ary[0])
+          
     // room basic info
       const basicInfo = document.querySelector(".basicInfo");
       let b = 
@@ -201,118 +201,151 @@ async function fetchData(){
     const breakfastN = document.querySelector(".breakfastN")    
     const breakfastBL = ary[0].amenities.Breakfast
     
+    const inBreakfastY = document.querySelector(".inBreakfastY")
+
     if ( breakfastBL === true ){
       breakfastN.setAttribute( "style", "display : none" )
     }
     else{
       breakfastY.setAttribute( "style", "display : none" )
+      inBreakfastY.setAttribute( "style", "display : none" ) 
     };
 
     const barY = document.querySelector(".barY")
     const barN = document.querySelector(".barN")
     const barBL = ary[0].amenities["Mini-Bar"]
     
+    const inBarY = document.querySelector(".inBarY")
+
     if ( barBL === true ){
       barN.setAttribute( "style", "display : none")
     }
     else{
       barY.setAttribute( "style", "display : none" )
+      inBarY.setAttribute( "style", "display : none" )
     }
   
     const serviceY = document.querySelector(".serviceY")
     const serviceN = document.querySelector(".serviceN")    
     const serviceBL = ary[0].amenities["Room-Service"]
     
+    const inServiceY = document.querySelector(".inServiceY")
+
     if ( serviceBL === true ){
       serviceN.setAttribute( "style", "display : none" )
     }
     else{
       serviceY.setAttribute( "style", "display : none" )
+      inServiceY.setAttribute( "style", "display : none" )
     };
 
   const childY = document.querySelector(".childY")
   const childN = document.querySelector(".childN")    
   const childBL = ary[0].amenities["Child-Friendly"]
+
+  const inChildY = document.querySelector(".inChildY")
     
     if ( childBL === true ){
       childN.setAttribute( "style", "display : none" )
     }
     else{
       childY.setAttribute( "style", "display : none" )
+      inChildY.setAttribute( "style", "display : none" )
     };
   
   const wifiY = document.querySelector(".wifiY")
   const wifiN = document.querySelector(".wifiN")    
   const wifiBL = ary[0].amenities["Wi-Fi"]
-    
+  
+  const inWifiY = document.querySelector(".inWifiY")
+
     if ( wifiBL === true ){
       wifiN.setAttribute( "style", "display : none" )
     }
     else{
       wifiY.setAttribute( "style", "display : none" )
+      inWifiY.setAttribute( "style", "display : none" ) 
     };
   
   const phoneY = document.querySelector(".phoneY")
   const phoneN = document.querySelector(".phoneN")    
   const phoneBL = ary[0].amenities["Television"]
-    
+  
+  const inPhoneY = document.querySelector(".inPhoneY")
+
     if ( wifiBL === true ){
       phoneN.setAttribute( "style", "display : none" )
     }
     else{
       phoneY.setAttribute( "style", "display : none" )
+      inPhoneY.setAttribute( "style", "display : none" )
     };
   
   const beautifulY = document.querySelector(".beautifulY")
   const beautifulN = document.querySelector(".beautifulN")    
   const beautifulBL = ary[0].amenities["Great-View"]
-    
+  
+  const inBeautifulY = document.querySelector(".inBeautifulY")
+
     if ( wifiBL === true ){
       beautifulN.setAttribute( "style", "display : none" )
     }
     else{
       beautifulY.setAttribute( "style", "display : none" )
+      inBeautifulY.setAttribute( "style", "display : none" ) 
     };
 
   const fridgeY = document.querySelector(".fridgeY")
   const fridgeN = document.querySelector(".fridgeN")    
   const fridgeBL = ary[0].amenities["Refrigerator"]
-    
+  
+  const inFridgeY = document.querySelector(".inFridgeY")
+
     if ( fridgeBL === true ){
       fridgeN.setAttribute( "style", "display : none" )
     }
     else{
       fridgeY.setAttribute( "style", "display : none" )
+      inFridgeY.setAttribute( "style", "display : none" )
     };
   
   const sofaY = document.querySelector(".sofaY")
   const sofaN = document.querySelector(".sofaN")    
   const sofaBL = ary[0].amenities["Sofa"]
-    
+  
+  const inSofaY = document.querySelector(".inSofaY")
+
     if ( sofaBL === true ){
       sofaN.setAttribute( "style", "display : none" )
     }
     else{
       sofaY.setAttribute( "style", "display : none" )
+      inSofaY.setAttribute( "style", "display : none" ) 
     };
   
   const petY = document.querySelector(".petY")
   const petN = document.querySelector(".petN")    
   const petBL = ary[0].amenities["Pet-Friendly"]
-      // console.log(wifiBL);
+  
+  const inPetY = document.querySelector(".inPetY")
+
     if ( petBL === true ){
       petN.setAttribute( "style", "display : none" )
     }
     else{
       petY.setAttribute( "style", "display : none" )
+      inPetY.setAttribute( "style", "display : none" )
     };
   
   const smokingY = document.querySelector(".smokingY")
   const smokingN = document.querySelector(".smokingN")    
   const smokingBL = ary[0].amenities["Smoke-Free"]
-      // console.log(wifiBL);
+  
+  const inSmokingY = document.querySelector(".inSmokingY")
+
     if ( smokingBL === true ){
       smokingY.setAttribute( "style", "display : none" )
+      inSmokingY.setAttribute( "style", "display : none" )
     }
     else{
       smokingN.setAttribute( "style", "display : none" )
@@ -321,15 +354,16 @@ async function fetchData(){
   const acY = document.querySelector(".acY")
   const acN = document.querySelector(".acN")    
   const acBL = ary[0].amenities["Air-Conditioner"]
-      // console.log(wifiBL);
+  
+  const inAcY = document.querySelector(".inAcY")
+
     if ( acBL === true ){
       acN.setAttribute( "style", "display : none" )
     }
     else{
       acY.setAttribute( "style", "display : none" )
+      inAcY.setAttribute( "style", "display : none" )
     };
-
-
   }
 
     //...
@@ -364,14 +398,39 @@ fetchData()
 // } 
 // fetchData()
 
+// 準備訂單的空物件
+const orderObj = {}
+const stayDays = []
 function submitOrder(){
   const orderName = document.getElementById("Name").value;
   const orderMobile = document.getElementById("Mobile").value;
-  const inDate = document.getElementById("inDate").value;
+  const inDate = document.getElementById("inDate").value
   const outDate = document.getElementById("outDate").value
 
-  console.log(orderName, orderMobile, inDate, outDate)
+  stayDays.push(inDate);
+  stayDays.push(outDate);
+
+  // console.log(stayDays);
+
+  orderObj.name = orderName;
+  orderObj.tel = orderMobile;
+  orderObj.date = stayDays
+  console.log(orderObj)
+
+
+
+  axios.post(`https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, orderObj, config)
+       .then( (res) => {
+          alert(`您已成功預訂該房型`)
+          })
+       .catch( (err) => {
+          alert(err)
+          })
+
 }
+
+
+ 
 
 
 
