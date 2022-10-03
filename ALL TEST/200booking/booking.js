@@ -253,7 +253,7 @@ fetchData()
 exitPage()
 
 function exitPage() {
-  document.querySelector('.cover').classList.add('d-none');
+  document.querySelector('.covered').classList.add('d-none');
 }
 
 

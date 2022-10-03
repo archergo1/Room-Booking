@@ -13,11 +13,13 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
-// 預設關閉訂單頁 
-exitPage()
+// 預設關閉訂單頁 成功頁 失敗頁 
+exitPage();
+exitSuccess();
+exitFailure();
 
 function exitPage() {
-  document.querySelector('.cover').classList.add('d-none');
+  document.querySelector('.covered').classList.add('d-none');
 }
 
 // 如果日期為空值 則不能點選booking
@@ -30,12 +32,25 @@ function openPage() {
   //     return
   // }
   document.querySelector(".bookingDetail").classList.remove("d-none");
-
   // document.getElementById("input_start").value = newAryDate[0];
   // document.getElementById("input_end").value = newAryDate[1];
 }
 
+function exitSuccess(){
+  document.querySelector('.success').classList.add('d-none');
+}
 
+function openSuccess(){
+  document.querySelector(".success").classList.remove("d-none");
+}
+
+function exitFailure(){
+  document.querySelector('.hideFailure').classList.add('d-none');
+}
+
+function openFailure(){
+  document.querySelector(".failure").classList.remove("d-none");
+}
 
 // API ID
 // retrieve the roomId in localstorage
@@ -55,7 +70,9 @@ async function fetchData(){
   let ary = [];
   try{
   await axios.get( `https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, config)
-    .then((res) => { ary = res.data.room; });
+    .then((res) => { ary = res.data.room;
+      console.log(res)
+    });
     
     showCarousel()
     showAmenities()
@@ -85,7 +102,7 @@ async function fetchData(){
   }
 
   // inject data into DOM element from API
-    // Render the room information 
+  // Render the room information 
     function roomDetail(){
       const roomName = document.querySelector(".roomName");
       let a = 
@@ -376,63 +393,76 @@ async function fetchData(){
 fetchData()
 
 
-// calendar on the room page
-// let hdpkr = new HotelDatepicker(document.getElementById('input-id'), options);
-
-
-
-// async function submitOrder(){
-  
-//   let ary = [];
-//   try{
-//   await axios.get( `https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, config)
-//     .then((res) => {ary = res.data.room;});
-
-
-//     //...
-//     //...
-//   } catch(err){
-//     console.log(err)
-//   }
-
-// } 
-// fetchData()
-
 // 準備訂單的空物件
 const orderObj = {}
 const stayDays = []
+const detailTime = new Date()
+// console.log(nowDate)
+const detailYMD = detailTime.toISOString()
+const nowYMD = detailYMD.split("T")[0]
+console.log(nowYMD)
+
 function submitOrder(){
   const orderName = document.getElementById("Name").value;
   const orderMobile = document.getElementById("Mobile").value;
-  const inDate = document.getElementById("inDate").value
-  const outDate = document.getElementById("outDate").value
-
+  const inDate = document.getElementById("inDate").value;
+  const outDate = document.getElementById("outDate").value;
   stayDays.push(inDate);
   stayDays.push(outDate);
 
-  // console.log(stayDays);
+  if ( orderName == ""){
+    alert("姓名有誤，請重填")
+    return false;  
+  }
+  // 手機號碼正則表達式
+  else if(!(/^09[0-9]{8}$/.test(orderMobile))){ 
+    alert("手機號碼有誤，請重填");  
+    return false; 
+  } 
+  else if (inDate == "" || inDate < nowYMD){
+    alert("請輸入有效入住日期")
+    return false;
+  }
+  else if (outDate == "" || outDate < nowYMD){
+    alert("請輸入有效退房日期")
+    return false;
+  }
+  else if(inDate >= outDate){
+    alert("退房日期必須大於入住日期")
+    return false
+  }
+  else{
+    orderObj.name = orderName;
+    orderObj.tel = orderMobile;
+    orderObj.date = stayDays
+    console.log(orderObj)
+    readyPost();
+  }
+  
 
-  orderObj.name = orderName;
-  orderObj.tel = orderMobile;
-  orderObj.date = stayDays
-  console.log(orderObj)
 
 
-
-  axios.post(`https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, orderObj, config)
+  // 確認無誤送出訂單
+  function readyPost(){
+    axios.post(`https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, orderObj, config)
        .then( (res) => {
+          exitPage();
+          openSuccess();
           alert(`您已成功預訂該房型`)
-          })
-       .catch( (err) => {
-          alert(err)
-          })
+        })
 
+       .catch( (err) => {
+          exitPage();
+          openFailure();
+          console.log(err);
+          alert(`預約失敗`)
+        })
+  }
 }
 
 
- 
-
-
+// calendar on the room page
+// let hdpkr = new HotelDatepicker(document.getElementById('input-id'), options);
 
 
 

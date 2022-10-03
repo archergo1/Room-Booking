@@ -245,8 +245,8 @@
                 <!-- <div id="datepicker"></div> -->
             </div>
 
-
-            <div class="bookingDetail cover">
+            <!-- 訂單頁 -->
+            <div class="bookingDetail covered">
                 <div class="secondLayer">
                   <div class="personalInfo">
                     <form action="" method="GET" id="myform">
@@ -254,29 +254,31 @@
                         <ul class = "order">
                           <li class = "guestName">
                             <label for = "Name">姓名</label>
-                            <input type="text" id="Name" name= "name" placeholder="黃曉明">
+                            <input type="text" id="Name" name= "name" placeholder="請輸入姓名" required>
                           </li>
                           <li class = "guestMobile">
                             <label for= "Mobile">手機號碼</label>
-                            <input type="text" id="Mobile" name = "tel" placeholder="0912345678" name="mobile">
+                            <input type="text" id="Mobile" name = "tel" placeholder="請輸入手機號碼" name="mobile" required>
                           </li>
                           <li>
                             <label for = "inDate">入住日期</label>
-                            <input type="text" id="inDate" name = "date">
+                            <input type="date" id="inDate" name = "date" required>
                           </li>
                           <li>
                             <label for = "outDate">退房日期</label>
-                            <input type="text" id="outDate" name = "date">
+                            <input type="date" id="outDate" name = "date" required>
                           </li>
                           <div class="days">
         
                           </div>
-                          <hr>
-                          <p class = "totalPrice">總計</p>
+                          <hr> 
+                        </ul>
+                        <p class = "totalPrice">總計</p>
+
                           <input class = "confirmSend" type ="button" onclick="submitOrder()" value = "確認送出">
+                          
                           <p class= "disclaimer">此預約系統僅預約功能，並不會對您進行收費</p>
                           
-                        </ul>
                       </form>
                 </div>
                 <div class="roomInfo">
@@ -406,6 +408,35 @@
                 </div>
                 </div>
             </div>
+
+            <!-- success -->
+            <div class="success hideSuccess">
+                <div class="secondSuccess">
+                    <div class="thirdSuccess">
+                        <button onclick="exitSuccess()" type="button" class="exitSuccess">X
+                        </button>
+                          <img src="./03_reserve popover_normal/success.svg" alt="" class="successImg">        
+                          <p class="successful">預約成功</p>
+                          <p class="successNote">請留意簡訊發送訂房通知，入住當日務必出示此訂房通知，<br> 若未收到簡訊請來電確認，謝謝您
+                          </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- failure -->
+            <div class="failure hideFailure">
+                <div class="secondFailure">
+                    <div class="thirdFailure">
+                        <button onclick="exitFailure()" type="button" class="exitFailure">X
+                        </button>
+                        <img src="./03_reserve popover_normal/failure.svg" alt="" class="failureImg">        
+                        <p class="failed">預約失敗</p>
+                        <p class="failureNote">哎呀！晚了一步！您預約的日期已經被預約走了，<br>再看看其它房型吧
+                        </p> 
+                    </div>
+                </div>   
+            </div>
+
 
         </div>
     </div>
