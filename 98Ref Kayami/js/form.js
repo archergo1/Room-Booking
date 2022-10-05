@@ -120,11 +120,6 @@ function calcPagePrice() {
     // realTotal = (holidayNum * roomData.holidayPrice) + (normalNum * roomData.normalDayPrice)
 
 
-
-
-
-
-
     document.querySelector("#changePrice").textContent = toThousands(calcNum);
     document.querySelector("#changeOrderPrice").textContent = toThousands(calcNum);
     document.querySelector("#howManyNight").textContent = calcHowMany;  //幾晚
@@ -133,10 +128,6 @@ function calcPagePrice() {
     document.querySelector("#totalday").textContent = calcHowMany + 1;  //總天數
     document.querySelector("#normalday").textContent = normalNum;
     document.querySelector("#holiday").textContent = holidayNum;
-
-
-
-
 
 }
 

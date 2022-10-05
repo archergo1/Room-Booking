@@ -13,6 +13,11 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
+
+
+
+
+
 // 預設關閉訂單頁 成功頁 失敗頁 
 exitPage();
 exitSuccess();
@@ -23,17 +28,16 @@ function exitPage() {
 }
 
 // 如果日期為空值 則不能點選booking
-
 // 點選訂房鈕，開啟訂單頁
 function openPage() {
 
-  // if (newAryDate[0] == undefined) {
-  //     alert('請先選擇入住時段')
-  //     return
-  // }
+  if (inAndOut[0] == undefined) {
+      alert('請先選擇入住時段')
+      return
+  }
   document.querySelector(".bookingDetail").classList.remove("d-none");
-  // document.getElementById("input_start").value = newAryDate[0];
-  // document.getElementById("input_end").value = newAryDate[1];
+  document.getElementById("inDate").value = inAndOut[0];
+  document.getElementById("outDate").value = inAndOut[1];
 }
 
 function exitSuccess(){
@@ -70,8 +74,7 @@ async function fetchData(){
   let ary = [];
   try{
   await axios.get( `https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, config)
-    .then((res) => { ary = res.data.room;
-      console.log(res)
+    .then((res) => { ary = res.data.room;      
     });
     
     showCarousel()
@@ -385,7 +388,8 @@ async function fetchData(){
 
     //...
     //...
-  } catch(err){
+  } 
+  catch(err){
     console.log(err)
   }
 
@@ -434,13 +438,14 @@ function submitOrder(){
   else{
     orderObj.name = orderName;
     orderObj.tel = orderMobile;
-    orderObj.date = stayDays
+    // orderObj.date = stayDays
+    orderObj.date = datesAry
     console.log(orderObj)
+
+
     readyPost();
   }
   
-
-
 
   // 確認無誤送出訂單
   function readyPost(){
@@ -461,8 +466,182 @@ function submitOrder(){
 }
 
 
-// calendar on the room page
-// let hdpkr = new HotelDatepicker(document.getElementById('input-id'), options);
+// hotel-datepicker on the room page
+let demo24 = new HotelDatepicker(document.getElementById('demo24'), {
+  inline: true,
+  clearButton: true,
+  moveBothMonths: true,
+  selectForward: true,
+  topbarPosition: 'bottom',
+  onSelectRange: function() {
+      // console.log('Date range selected!');
+      getDates = demo24.getValue();
+      // console.log(getDates)
+      getNights = demo24.getNights();
+      // console.log(getNights)
+      splitRange()
+
+      
+  },
+  i18n: {
+      selected: 'Your stay:',
+      night: 'Night',
+      nights: 'Nights',
+      button: 'Close',
+      clearButton: '重新選取',
+      submitButton: 'Submit',
+      'checkin-disabled': 'Check-in disabled',
+      'checkout-disabled': 'Check-out disabled',
+      'day-names-short': ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      'day-names': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      'month-names-short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      'error-more': 'Date range should not be more than 1 night',
+      'error-more-plural': 'Date range should not be more than %d nights',
+      'error-less': 'Date range should not be less than 1 night',
+      'error-less-plural': 'Date range should not be less than %d nights',
+      'info-more': 'Please select a date range of at least 1 night',
+      'info-more-plural': 'Please select a date range of at least %d nights',
+      'info-range': 'Please select a date range between %d and %d nights',
+      'info-range-equal': 'Please select a date range of %d nights',
+      'info-default': 'Please select a date range'
+  }
+});
+
+
+const dollars = document.querySelector(".dollars");
+const nights = document.querySelector(".nights");
+
+// 將日曆選到的日期，處理成由入住和退房日期組成的陣列
+let inAndOut =[];
+function splitRange(){
+
+    inAndOut = getDates.split(" - ")
+
+    nights.textContent = getNights;
+
+    calcAllPrice()  
+}
+
+
+// let dayNum = 0
+// let datesAry = [];
+
+// 計算住宿總金額
+async function calcAllPrice(){
+
+  let ary = [];
+  try{
+    await axios.get( `https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, config)
+      .then((res) => { ary = res.data.room;      
+      });
+  
+  let dayNum = 0;
+  
+  console.log(ary);
+  let dayStart = new Date(inAndOut[0])
+  let dayEnd = new Date(inAndOut[1])
+  
+  datesAry = getDateBetween(dayStart, dayEnd);
+  dayNum = datesAry.length 
+
+  // 扣掉最後一天，不算住宿
+  datesAry.pop();
+  
+  // 入住天數
+  
+
+  console.log(datesAry);
+  console.log(dayNum)
+  
+
+  let priceTotal = 0;
+  let normalNum = 0;
+  let holidayNum = 0;
+
+  const howMuch = document.querySelector(".howMuch");
+  const dayCount = document.querySelector(".dayCount");
+  const normalCount = document.querySelector(".normalCount");
+  const holidayCount = document.querySelector(".holidayCount");
+
+  datesAry.forEach((item)=>{
+    standardDate = new Date(item);
+    whatDay = standardDate.getDay();
+    console.log(whatDay);
+
+  if (whatDay == 5 || whatDay ==6 || whatDay == 0){
+    priceTotal += ary[0].holidayPrice
+    holidayNum ++;
+  }
+  else if (whatDay == 1 || whatDay ==2 || whatDay ==3 || whatDay ==4){  
+    priceTotal += ary[0].normalDayPrice;
+    normalNum ++;
+  }
+  
+  console.log(priceTotal)
+  console.log(normalNum)
+  console.log(holidayNum)
+  })
+
+  howMuch.textContent = priceTotal.toLocaleString('en-US');
+  dollars.textContent = priceTotal.toLocaleString('en-US');
+
+  dayCount.textContent = `${dayNum}天`
+  normalCount.textContent = `，平日${normalNum}晚`
+  holidayCount.textContent = `，假日${holidayNum}晚`
+
+  
+  } 
+    catch(err){
+      
+      console.log(err)
+    }
+
+}
+
+
+// 取得兩個日期間的所有日期，組成陣列
+function getDateBetween(start, end) {
+  let result = [];
+  //使用传入参数的时间
+  let startTime = new Date(start);
+  let endTime = new Date(end);
+  while (endTime - startTime >= 0) {
+      let year = startTime.getFullYear();
+      let month = startTime.getMonth();
+      month = month < 9 ? '0' + (month + 1) : month + 1;
+      let day = startTime.getDate().toString().length == 1 ? "0" + startTime.getDate() : startTime.getDate();
+      //加入数组
+      result.push(year + "-" + month + "-" + day);
+      //更新日期
+      startTime.setDate(startTime.getDate() + 1);
+  }
+  return result;
+}
 
 
 
+const datepicker_clearBtn = document.querySelector("datepicker__clear-button")
+datepicker_clearBtn.addEventListener("click", splitRange());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function a(){
+//   let b = 2
+//   return b
+// }
+
+// let c = a()

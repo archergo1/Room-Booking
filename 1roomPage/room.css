@@ -132,6 +132,25 @@ img{ max-width: 100%;
     border-radius: 5px
 }
 
+.showTotalAmount{
+	color: #38470B;
+	font-size: 40px;
+	height: 50px;
+	width: 250px;
+	position:absolute;
+	z-index: 2;
+	right: 160px;
+	bottom: 165px;
+	display: flex;
+	justify-content: center;
+}
+
+.nights
+.dollars{
+	color: #38470B;
+	font-size: 40px;
+}
+
 .booking{
 	cursor: pointer;
     width: 252px;
@@ -140,7 +159,7 @@ img{ max-width: 100%;
     background-color: #38470B;
     color: white;
     position: absolute;
-    bottom:109px;
+    bottom:110px;
     right:160px;
     z-index: 2;
 }
@@ -231,6 +250,7 @@ h2{
 
 .emptyRoom{
     color: #38470B;
+	margin-bottom: 10px;
 }
 
 
@@ -252,9 +272,40 @@ label{
 	margin-bottom: 7px;
 }
 
+.dayAndNight{
+	height: 20px;
+}
+
+
+
+.dayCount,
+.normalCount,
+.holidayCount
+{
+	font-size: 20px;
+	color: #949c7c;
+}
+
 .totalPrice{
+	font-size: 30px;
 	color: white;
 	text-align: end;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.outsideHowMuch{
+	display: flex;
+	justify-content: end;
+	margin-bottom: 10px;
+	font-size: 30px;
+	color: white;
+}
+
+.howMuch{
+	justify-content: end;
+	font-size: 30px;
+	color: white;
 }
 
 .confirmSend{

@@ -10,9 +10,8 @@
     <link
       rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
-<!--     
-    <link rel="stylesheet" type="text/css" href="../test hotel datepicker/hotel-datepicker-4.4.1/dist/css/hotel-datepicker.css">
-    <link rel="stylesheet" href="../test hotel datepicker/hotel-datepicker-4.4.1/demo/css/main.css"> -->
+    <link rel="stylesheet" href="./hotel-datepicker-4.4.1/dist/css/hotel-datepicker.css">
+    <!-- <link rel="stylesheet" href="./hotel-datepicker-4.4.1/demo/css/main.css"> -->
 
     <link rel="stylesheet" href="room.css">
     <!-- <link rel="stylesheet" href="./datepicker/jquery-ui.min.css" />  -->
@@ -35,6 +34,11 @@
                 <div class= "roomPriceContent">
                     <button class="goBack" onclick= "location.href='../0homePage/index.html'" type = "button">查看其他房型</button>
                     <!-- <button class="booking" onclick= "window.location.href=''">Booking now</button> -->
+
+                    <div class = "showTotalAmount">
+                        $<span class = "dollars"></span> /
+                        <span class = "nights"></span>晚
+                    </div>
                     <button class="booking" onclick="openPage()" type="button" >Booking now</button>           
                 </div>
             </div>
@@ -240,7 +244,7 @@
                 <h3 class = "emptyRoom">空房狀態查詢</h3>
                 <!-- hotel datepicker -->
                 <div class="demo__input">
-                    <input type="hidden" id="demo24" value="">
+                    <input type="hidden" id="demo24">
                 </div>
                 <!-- <div id="datepicker"></div> -->
             </div>
@@ -271,10 +275,17 @@
                           <div class="days">
         
                           </div>
-                          <hr> 
+                          
                         </ul>
+                        
+                        <div class = "dayAndNight">
+                            <span class = "dayCount"></span>
+                            <span class = "normalCount"></span>
+                            <span class = "holidayCount"></span>
+                        </div>
+                        <hr>
                         <p class = "totalPrice">總計</p>
-
+                        <div class="outsideHowMuch">$<span class="howMuch"></span></div>
                           <input class = "confirmSend" type ="button" onclick="submitOrder()" value = "確認送出">
                           
                           <p class= "disclaimer">此預約系統僅預約功能，並不會對您進行收費</p>
@@ -449,11 +460,13 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
+    <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
 
-    <script src="../test hotel datepicker/fecha-4.2.1/dist/fecha.min.js"></script>
-    <script src="../test hotel datepicker/hotel-datepicker-4.4.1/dist/js/hotel-datepicker.min.js"></script>
-    <script src="../test hotel datepicker/fecha-4.2.1/lib/fecha.js"></script>
+
+    <!-- hotel datepicker -->
+    <script src="./fecha-master/dist/fecha.min.js"></script>
+    <script src="./hotel-datepicker-4.4.1/dist/js/hotel-datepicker.min.js"></script>
     <!-- <script src="./datepicker/jquery.js"></script>
     <script src="./datepicker/jquery-ui.min.js"></script> -->
     <script src="room.js"></script>
