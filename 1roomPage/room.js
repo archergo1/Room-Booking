@@ -13,8 +13,47 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
+// hotel-datepicker on the room page
+let demo24 = new HotelDatepicker(document.getElementById('demo24'), {
+  inline: true,
+  clearButton: true,
+  moveBothMonths: true,
+  selectForward: true,
+  topbarPosition: 'bottom',
+  onSelectRange: function() {
+      // console.log('Date range selected!');
+      getDates = demo24.getValue();
+      // console.log(getDates)
+      getNights = demo24.getNights();
+      // console.log(getNights)
+      splitRange()
 
-
+      
+  },
+  i18n: {
+      selected: 'Your stay:',
+      night: 'Night',
+      nights: 'Nights',
+      button: 'Close',
+      clearButton: '重新選取',
+      submitButton: 'Submit',
+      'checkin-disabled': 'Check-in disabled',
+      'checkout-disabled': 'Check-out disabled',
+      'day-names-short': ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      'day-names': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      'month-names-short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      'error-more': 'Date range should not be more than 1 night',
+      'error-more-plural': 'Date range should not be more than %d nights',
+      'error-less': 'Date range should not be less than 1 night',
+      'error-less-plural': 'Date range should not be less than %d nights',
+      'info-more': 'Please select a date range of at least 1 night',
+      'info-more-plural': 'Please select a date range of at least %d nights',
+      'info-range': 'Please select a date range between %d and %d nights',
+      'info-range-equal': 'Please select a date range of %d nights',
+      'info-default': 'Please select a date range'
+  }
+});
 
 
 
@@ -62,24 +101,47 @@ let roomId = JSON.parse(localStorage.getItem("roomId"));
 
 // token
 const token = "99Jy6qkztis6S5Yc4FosmkwvP3yqNnMEXleW6Z7UsOYabOn7GYZgFY6tNyyW";
-
 const config = {
   headers: {
     'Authorization': `Bearer ${token}`
   }
 }
 
+fetchData()
+
 async function fetchData(){
   
   let ary = [];
   try{
   await axios.get( `https://challenge.thef2e.com/api/thef2e2019/stage6/room/${roomId}`, config)
-    .then((res) => { ary = res.data.room;      
-    });
-    
+    .then((res) => { ary = res.data.room;
+                    bookedInfo = res.data.booking      
+                   });
+
+    console.log(bookedInfo);
     showCarousel()
     showAmenities()
     roomDetail()
+    getDatedOccupied()
+  
+  
+  function getDatedOccupied(){
+    let dateBooked = []
+    
+    bookedInfo.forEach ((item) =>{
+      dateBooked.push(item.date);
+    })
+    console.log(dateBooked);
+  
+    // renderOccupiedDate();
+
+    // function renderOccupiedDate(){
+    // demo24.disabledDates = dateBooked;
+    // }
+
+  }
+  
+  
 
   // 房間內部照片輪播
   function showCarousel(){
@@ -394,7 +456,7 @@ async function fetchData(){
   }
 
 } 
-fetchData()
+
 
 
 // 準備訂單的空物件
@@ -466,47 +528,6 @@ function submitOrder(){
 }
 
 
-// hotel-datepicker on the room page
-let demo24 = new HotelDatepicker(document.getElementById('demo24'), {
-  inline: true,
-  clearButton: true,
-  moveBothMonths: true,
-  selectForward: true,
-  topbarPosition: 'bottom',
-  onSelectRange: function() {
-      // console.log('Date range selected!');
-      getDates = demo24.getValue();
-      // console.log(getDates)
-      getNights = demo24.getNights();
-      // console.log(getNights)
-      splitRange()
-
-      
-  },
-  i18n: {
-      selected: 'Your stay:',
-      night: 'Night',
-      nights: 'Nights',
-      button: 'Close',
-      clearButton: '重新選取',
-      submitButton: 'Submit',
-      'checkin-disabled': 'Check-in disabled',
-      'checkout-disabled': 'Check-out disabled',
-      'day-names-short': ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-      'day-names': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      'month-names-short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      'month-names': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      'error-more': 'Date range should not be more than 1 night',
-      'error-more-plural': 'Date range should not be more than %d nights',
-      'error-less': 'Date range should not be less than 1 night',
-      'error-less-plural': 'Date range should not be less than %d nights',
-      'info-more': 'Please select a date range of at least 1 night',
-      'info-more-plural': 'Please select a date range of at least %d nights',
-      'info-range': 'Please select a date range between %d and %d nights',
-      'info-range-equal': 'Please select a date range of %d nights',
-      'info-default': 'Please select a date range'
-  }
-});
 
 
 const dollars = document.querySelector(".dollars");
@@ -517,7 +538,6 @@ let inAndOut =[];
 function splitRange(){
 
     inAndOut = getDates.split(" - ")
-
     nights.textContent = getNights;
 
     calcAllPrice()  
@@ -621,20 +641,8 @@ function getDateBetween(start, end) {
 
 
 
-const datepicker_clearBtn = document.querySelector("datepicker__clear-button")
-datepicker_clearBtn.addEventListener("click", splitRange());
-
-
-
-
-
-
-
-
-
-
-
-
+// const datepicker_clearBtn = document.querySelector("datepicker__clear-button")
+// datepicker_clearBtn.addEventListener("click", splitRange());
 
 
 

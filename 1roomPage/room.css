@@ -261,10 +261,6 @@ h2{
 }
 
 
-
-
-
-
 /* the booking page */
 
 label{
@@ -402,10 +398,24 @@ hr{
 }
 
 .orderProcessTitle{
+	position: relative;
 	margin-bottom: 12px;
+	font-size: 20px;
+}
+
+.orderProcessTitle::after{
+	position: absolute;
+	content: "";
+	background-color: #949C7C;
+	top: 10px;
+	left: 90px;
+	height: 1px;
+	width: 85%;
+	opacity: 50%;
 }
 
 .orderProcess{
+	/* font-size: 30px; */
 	display: flex;
 	justify-content: space-between;
 }
@@ -439,12 +449,25 @@ hr{
 }
 
 .inRoomName{
+	position: relative;
 	font-size: 24px;
 	color: #38470B;
 	line-height: 33px;
 	margin-bottom: 12px;
 	margin-top: 40px;
 }
+
+.inRoomName::after{
+	position: absolute;
+	content: "";
+	background-color: #949C7C;
+	top: 18px;
+	left: 140px;
+	height: 1px;
+	width: 480px;
+	opacity: 50%;
+}
+
 
 .inModalDetail li{
 	font-size: 14px;
@@ -508,9 +531,23 @@ h2{
 
 .memoTitle{
 	margin-bottom: 12px;
+	position: relative;
+	font-size: 20px;
+}
+
+.memoTitle::after{
+	position: absolute;
+	content: "";
+	background-color: #949C7C;
+	top: 10px;
+	left: 90px;
+	height: 1px;
+	width: 85%;
+	opacity: 50%;
 }
 
 .memo{
+	/* position: relative; */
 	margin-bottom: 12px;
 }
 
