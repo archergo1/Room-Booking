@@ -46,7 +46,7 @@ async function fetchData(){
     const room1 = document.querySelector(".single")
     let singlePic = 
         `<img src="${ary[0].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html" >
+        <a href="./1roomPage/room.html" >
         <div class="mask">
         <h3 id = "3Elqe8kfMxdZv5xFLV4OUeN6jhmxIvQSTyj4eTgIowfIRvF4rerA2Nuegzc2Rgwu">${ary[0].name}</h3>
         </div>
