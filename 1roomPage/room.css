@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'Noto Sans TC', sans-serif !important;
 }
 ol, ul {
 	list-style: none;
@@ -478,7 +479,7 @@ hr{
 h2{
 	font-size: 16px;
 	color: #38470B;
-	font-family: Noto Sans CJK TC;
+	/* font-family: Noto Sans CJK TC; */
 	line-height: 24px;
 }
 
