@@ -133,6 +133,8 @@ async function fetchData(){
     })
     console.log(dateBooked);
   
+
+    // 想要在套件中disable已經被預訂走的日期，但是弄不出來
     // renderOccupiedDate();
 
     // function renderOccupiedDate(){
@@ -462,11 +464,23 @@ async function fetchData(){
 // 準備訂單的空物件
 const orderObj = {}
 const stayDays = []
-const detailTime = new Date()
+const detailToday = new Date()
 // console.log(nowDate)
-const detailYMD = detailTime.toISOString()
-const nowYMD = detailYMD.split("T")[0]
-console.log(nowYMD)
+const nowYMD = detailToday.toISOString()
+const todayYMD = nowYMD.split("T")[0]
+console.log(todayYMD)
+console.log(typeof todayYMD)
+
+// 讓訂單頁可選日期不可小於今天
+disableBeforeToday()
+function disableBeforeToday(){
+  const inDate = document.getElementById('inDate')  
+  const outDate = document.getElementById('outDate')
+
+  inDate.setAttribute('min', todayYMD)
+  outDate.setAttribute('min', todayYMD)
+}
+
 
 function submitOrder(){
   const orderName = document.getElementById("Name").value;
@@ -574,7 +588,7 @@ async function calcAllPrice(){
   console.log(datesAry);
   console.log(dayNum)
   
-
+  // calculate number of holidays, working days and total price
   let priceTotal = 0;
   let normalNum = 0;
   let holidayNum = 0;
@@ -638,6 +652,18 @@ function getDateBetween(start, end) {
   }
   return result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
