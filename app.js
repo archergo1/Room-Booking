@@ -57,7 +57,7 @@ async function fetchData(){
     const room2 = document.querySelector(".double")
     let doublePic = 
         `<img src="${ary[2].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html">
+        <a href="./1roomPage/room.html">
         <div class="mask">
         <h3 id = "RA8NhExaXXZB7EODVALSDvFFQzj1JP0a4C1pwZ1acPaieRBwiWoCb0FE0KUbXaxg">${ary[2].name}</h3>
         </div>
@@ -67,7 +67,7 @@ async function fetchData(){
     const room3 = document.querySelector(".twin")
     let twinPic = 
         `<img src="${ary[4].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html">
+        <a href="./1roomPage/room.html">
         <div class="mask">
         <h3 id = "VCxbQq1vLeUtxW781k9Dlq3mHBRNl5YP19Lhq8k5TbIr2BeH58gRpnNKGoEgkysz">${ary[4].name}</h3>
         </div>
@@ -77,7 +77,7 @@ async function fetchData(){
     const room4 = document.querySelector(".deluxeSingle")
     let deluxeSinglePic = 
         `<img src="${ary[1].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html">
+        <a href="./1roomPage/room.html">
         <div class="mask">
         <h3 id = "g0mYhN6ignMz4VYW7eiWsXZN8DHolHzH8LuVmM6hq5h6BrrqrLMw4aJgHv7LZ3RQ">${ary[1].name}</h3>
         </div>
@@ -87,7 +87,7 @@ async function fetchData(){
     const room5 = document.querySelector(".deluxeDouble")
     let deluxeDoublePic = 
         `<img src="${ary[3].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html">
+        <a href="./1roomPage/room.html">
         <div class="mask">
         <h3 id = "kICyWhZ5XsfI4n1d4gBOsDjIyIxNozwgmxYKyZpzi5pjLcU2Nl4RhiGrn6zaPuTJ">${ary[3].name}</h3>
         </div>
@@ -97,7 +97,7 @@ async function fetchData(){
     const room6 = document.querySelector(".deluxeTwin")
     let deluxeTwinPic = 
         `<img src="${ary[5].imageUrl}" alt=""></img>
-        <a href="../1roomPage/room.html">
+        <a href="./1roomPage/room.html">
         <div class="mask">
         <h3 id = "YovqNpFDaal598jbpd1A14gXwDE6gekTqJgxOAGcq78B8YnP7claymQVFy2GTwgb">${ary[5].name}</h3>
         </div>
@@ -105,12 +105,7 @@ async function fetchData(){
     room6.innerHTML = deluxeTwinPic;
     //...
     //...
-
-
-  
-
-
-
+    
   } catch(err){
     console.log(err)
   }
@@ -118,11 +113,11 @@ async function fetchData(){
 } 
 fetchData()
 
-//點擊房型 儲存點擊資料的id在localStorage
+//點擊房型後 儲存點擊資料的id在localStorage
 let roomType = document.querySelector(".roomType")
-roomType.addEventListener('click', saveData, false)
+roomType.addEventListener('click', saveRoomId, false)
 
-function saveData(e) {
+function saveRoomId(e) {
   localStorage.setItem("roomId", JSON.stringify(e.target.id));
   console.log(e.target)
 }
